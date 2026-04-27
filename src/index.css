@@ -1,0 +1,122 @@
+:root {
+  /* Colors from design.md */
+  --surface: #121414;
+  --surface-dim: #121414;
+  --surface-bright: #37393a;
+  --surface-container-lowest: #0c0f0f;
+  --surface-container-low: #1a1c1c;
+  --surface-container: #1e2020;
+  --surface-container-high: #282a2b;
+  --surface-container-highest: #333535;
+  --on-surface: #e2e2e2;
+  --on-surface-variant: #b9cac8;
+  --inverse-surface: #e2e2e2;
+  --inverse-on-surface: #2f3131;
+  --outline: #839492;
+  --outline-variant: #3a4a48;
+  --surface-tint: #00ddd6;
+  --primary: #ffffff;
+  --on-primary: #003735;
+  --primary-container: #00fcf4;
+  --on-primary-container: #00716d;
+  --inverse-primary: #006a66;
+  --secondary: #c8c6c5;
+  --on-secondary: #313030;
+  --secondary-container: #4a4949;
+  --on-secondary-container: #bab8b7;
+  --tertiary: #ffffff;
+  --on-tertiary: #313030;
+  --tertiary-container: #e5e2e1;
+  --on-tertiary-container: #656464;
+  --error: #ffb4ab;
+  --on-error: #690005;
+  --error-container: #93000a;
+  --on-error-container: #ffdad6;
+  --primary-fixed: #00fcf4;
+  --primary-fixed-dim: #00ddd6;
+  --on-primary-fixed: #00201f;
+  --on-primary-fixed-variant: #00504d;
+  --secondary-fixed: #e5e2e1;
+  --secondary-fixed-dim: #c8c6c5;
+  --on-secondary-fixed: #1c1b1b;
+  --on-secondary-fixed-variant: #474646;
+  --tertiary-fixed: #e5e2e1;
+  --tertiary-fixed-dim: #c9c6c5;
+  --on-tertiary-fixed: #1c1b1b;
+  --on-tertiary-fixed-variant: #474646;
+  --background: #121414;
+  --on-background: #e2e2e2;
+  --surface-variant: #333535;
+  
+  /* Brand Specific */
+  --brand-primary: #00fff7;
+  --brand-bg: #0a0a0a;
+
+  /* Typography */
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--brand-bg);
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 255, 247, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 30px rgba(0, 255, 247, 0.1);
+}
+
+.cyan-glow {
+  filter: drop-shadow(0 0 10px rgba(0, 255, 247, 0.5));
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--brand-primary);
+  border-radius: 10px;
+}
+
+.grid-bg {
+  background-image: radial-gradient(rgba(0, 255, 247, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Tailwind-like utilities if needed, but we'll use them via className */
+.px-gutter { padding-left: 24px; padding-right: 24px; }
+.py-section-padding { padding-top: 80px; padding-bottom: 80px; }
+.max-w-7xl { max-width: 1280px; margin-left: auto; margin-right: auto; }
