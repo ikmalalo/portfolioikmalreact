@@ -33,7 +33,7 @@ const Navbar = () => {
             isCollapsed ? 'left-1/2 -translate-x-1/2' : 'left-6 translate-x-0'
           }`}
         >
-          DevTerminal
+          Ikmalatte
         </div>
         
         {/* Menus & Button */}
