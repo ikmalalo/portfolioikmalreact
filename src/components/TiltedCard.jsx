@@ -39,12 +39,12 @@ export default function TiltedCard({
 
   const [lastY, setLastY] = useState(0);
 
-  function handleMouse(e) {
+  function handleMove(clientX, clientY) {
     if (!ref.current) return;
 
     const rect = ref.current.getBoundingClientRect();
-    const offsetX = e.clientX - rect.left - rect.width / 2;
-    const offsetY = e.clientY - rect.top - rect.height / 2;
+    const offsetX = clientX - rect.left - rect.width / 2;
+    const offsetY = clientY - rect.top - rect.height / 2;
 
     const rotationX = (offsetY / (rect.height / 2)) * -rotateAmplitude;
     const rotationY = (offsetX / (rect.width / 2)) * rotateAmplitude;
@@ -52,20 +52,30 @@ export default function TiltedCard({
     rotateX.set(rotationX);
     rotateY.set(rotationY);
 
-    x.set(e.clientX - rect.left);
-    y.set(e.clientY - rect.top);
+    x.set(clientX - rect.left);
+    y.set(clientY - rect.top);
 
     const velocityY = offsetY - lastY;
     rotateFigcaption.set(-velocityY * 0.6);
     setLastY(offsetY);
   }
 
-  function handleMouseEnter() {
+  function handleMouseMove(e) {
+    handleMove(e.clientX, e.clientY);
+  }
+
+  function handleTouchMove(e) {
+    if (e.touches.length > 0) {
+      handleMove(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }
+
+  function handleInteractionStart() {
     scale.set(scaleOnHover);
     opacity.set(1);
   }
 
-  function handleMouseLeave() {
+  function handleInteractionEnd() {
     opacity.set(0);
     scale.set(1);
     rotateX.set(0);
@@ -81,9 +91,13 @@ export default function TiltedCard({
         height: containerHeight,
         width: containerWidth
       }}
-      onMouseMove={handleMouse}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleInteractionStart}
+      onMouseLeave={handleInteractionEnd}
+      onTouchMove={handleTouchMove}
+      onTouchStart={handleInteractionStart}
+      onTouchEnd={handleInteractionEnd}
+      onTouchCancel={handleInteractionEnd}
     >
       {showMobileWarning && (
         <div className="tilted-card-mobile-alert">This effect is not optimized for mobile. Check on desktop.</div>
