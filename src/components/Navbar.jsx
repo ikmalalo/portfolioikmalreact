@@ -40,13 +40,13 @@ const Navbar = () => {
         <AnimatePresence>
           {!isCollapsed && (
             <>
-              {/* Center Links */}
+              {/* Center/Right Links */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                 exit={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
                 transition={{ duration: 0.2 }}
-                className="hidden md:flex gap-8 items-center whitespace-nowrap z-10"
+                className="absolute right-6 md:static flex gap-3 md:gap-8 items-center whitespace-nowrap z-10 text-[10px] sm:text-sm md:text-base"
               >
                 <a className="text-white/70 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all" href="#stack">Stack</a>
                 <a className="text-white/70 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all" href="#experience">Experience</a>
@@ -60,9 +60,9 @@ const Navbar = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.2 }}
-                className="absolute right-6 flex items-center gap-4 z-10"
+                className="absolute right-6 hidden md:flex items-center gap-4 z-10"
               >
-                <span className="material-symbols-outlined text-cyan-400 hidden sm:block">terminal</span>
+                <span className="material-symbols-outlined text-cyan-400">terminal</span>
                 <button className="bg-[#00fff7] text-black px-5 py-2 rounded-full font-label-caps text-xs hover:shadow-[0_0_20px_rgba(0,255,247,0.6)] hover:bg-[#b3fffb] transition-all whitespace-nowrap">
                   Hire Me
                 </button>
