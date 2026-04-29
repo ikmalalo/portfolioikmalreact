@@ -18,6 +18,7 @@ const SplitText = ({
   rootMargin = '-100px',
   textAlign = 'center',
   tag = 'p',
+  charsClassName = '',
   onLetterAnimationComplete
 }) => {
   const ref = useRef(null);
@@ -82,7 +83,7 @@ const SplitText = ({
         autoSplit: splitType === 'lines',
         linesClass: 'split-line',
         wordsClass: 'split-word',
-        charsClass: 'split-char',
+        charsClass: `split-char ${charsClassName}`,
         reduceWhiteSpace: false,
         onSplit: self => {
           assignTargets(self);

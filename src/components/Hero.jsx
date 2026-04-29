@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ProfileCard from './ProfileCard';
+import SplitText from './SplitText';
 import imagePng from '../fotoprofile.png';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -49,17 +50,41 @@ const Hero = () => {
   return (
     <section 
       ref={sectionRef}
-      className="min-h-screen flex flex-col justify-center items-center px-6 md:px-12 lg:px-24 pt-40 pb-16 relative overflow-hidden max-w-7xl mx-auto w-full"
+      className="min-h-screen flex flex-col justify-center items-start px-6 md:px-12 lg:px-24 pt-40 pb-16 relative overflow-hidden max-w-7xl mx-auto w-full"
     >
-      <div className="hero-parallax-wrapper relative z-10 w-full flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+      <div className="hero-parallax-wrapper relative z-10 w-full flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-16">
         {/* Left Column: Text Content */}
-        <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:w-1/2">
+        <div className="flex flex-col items-start text-left lg:w-1/2">
           <div className="hero-reveal inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-400/30 bg-cyan-400/5 mb-6 md:mb-8">
             <span className="w-2 h-2 rounded-full bg-[#00fff7] animate-pulse"></span>
             <span className="font-label-caps text-[10px] text-cyan-400 uppercase tracking-[0.2em]">Available for work</span>
           </div>
-          <h1 className="hero-reveal font-h1 text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-[1.1] md:leading-tight">
-            Future Software <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Engineer</span> and Web Creator.
+          <h1 className="font-h1 text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-[1.1] md:leading-tight text-left flex flex-wrap gap-x-[0.2em] gap-y-[0.1em]">
+            <SplitText
+              text="Future Software "
+              delay={30}
+              splitType="chars"
+              tag="span"
+              textAlign="left"
+              className="text-white inline-block"
+            />
+            <SplitText
+              text="Engineer "
+              delay={90}
+              splitType="chars"
+              tag="span"
+              textAlign="left"
+              className="text-cyan-400 inline-block"
+              charsClassName="inline-block"
+            />
+            <SplitText
+              text="and Web Creator."
+              delay={150}
+              splitType="chars"
+              tag="span"
+              textAlign="left"
+              className="text-white inline-block"
+            />
           </h1>
           <p className="hero-reveal font-body-lg text-sm sm:text-lg lg:text-xl text-white/60 max-w-2xl mb-8 md:mb-10">
             Senior Full-Stack Engineer specializing in high-performance SaaS platforms and immersive digital experiences with a focus on technical precision.
