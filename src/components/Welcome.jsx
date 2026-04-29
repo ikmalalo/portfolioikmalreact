@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitText from './SplitText';
-import Orb from './Orb';
+import Aurora from './Aurora';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,14 +39,13 @@ const Welcome = () => {
 
   return (
     <section ref={sectionRef} className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden px-6">
-      {/* Orb Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-80">
-        <Orb
-          hoverIntensity={0.5}
-          rotateOnHover={true}
-          hue={0} // Using the hardcoded Cyan base colors
-          forceHoverState={false}
-          backgroundColor="#121212"
+      {/* Aurora Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-50">
+        <Aurora
+          colorStops={["#06B6D4", "#05f8e1", "#00ffc6"]}
+          blend={0.5}
+          amplitude={1.0}
+          speed={1}
         />
       </div>
 
