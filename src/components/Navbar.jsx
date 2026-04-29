@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import StarBorder from './StarBorder';
 
 const Navbar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -64,18 +63,12 @@ const Navbar = () => {
                 className="absolute right-6 hidden md:flex items-center gap-4 z-10"
               >
                 <span className="material-symbols-outlined text-cyan-400">mail</span>
-                <StarBorder
-                  as="a"
+                <a
                   href="mailto:itsikmlal@gmail.com"
-                  color="#00fff7"
-                  speed="3s"
-                  className="hover:shadow-[0_0_20px_rgba(0,255,247,0.4)] transition-all cursor-pointer"
-                  style={{ borderRadius: '9999px' }}
+                  className="block bg-white/5 backdrop-blur-xl border border-white/10 text-white px-5 py-2 rounded-full font-label-caps text-xs hover:bg-white/10 hover:shadow-[0_0_20px_rgba(0,255,247,0.3)] transition-all cursor-pointer whitespace-nowrap"
                 >
-                  <div className="block bg-white/5 backdrop-blur-xl border border-white/10 text-white px-5 py-2 rounded-full font-label-caps text-xs hover:bg-white/10 transition-colors whitespace-nowrap">
-                    itsikmlal@gmail.com
-                  </div>
-                </StarBorder>
+                  itsikmlal@gmail.com
+                </a>
               </motion.div>
             </>
           )}
