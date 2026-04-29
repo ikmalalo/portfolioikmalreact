@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitText from './SplitText';
 import Aurora from './Aurora';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Welcome = () => {
+  const sectionRef = useRef(null);
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Parallax and Fade effect on scroll (Scrubbing)
+      gsap.to(contentRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        },
+        y: -100,
+        opacity: 0,
+        ease: 'none'
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const scrollToHero = () => {
     window.scrollTo({
       top: window.innerHeight,
@@ -12,7 +38,7 @@ const Welcome = () => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden px-6">
+    <section ref={sectionRef} className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden px-6">
       {/* Aurora Background */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-50">
         <Aurora
@@ -23,7 +49,7 @@ const Welcome = () => {
         />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center text-center">
+      <div ref={contentRef} className="relative z-10 flex flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -63,7 +89,6 @@ const Welcome = () => {
           transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
         >
           <span>Explore everything about me on here, hope you enjoy it!</span>
-          
         </motion.div>
       </div>
 
