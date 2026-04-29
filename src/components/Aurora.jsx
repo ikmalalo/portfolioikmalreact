@@ -135,9 +135,16 @@ export default function Aurora(props) {
 
     function resize() {
       if (!ctn) return;
-      const width = ctn.offsetWidth;
-      const height = ctn.offsetHeight;
+      // Reduce resolution for performance (0.5x scale)
+      const scale = 0.5;
+      const width = ctn.offsetWidth * scale;
+      const height = ctn.offsetHeight * scale;
       renderer.setSize(width, height);
+      
+      // Scale canvas back up to 100% using CSS
+      gl.canvas.style.width = '100%';
+      gl.canvas.style.height = '100%';
+
       if (program) {
         program.uniforms.uResolution.value = [width, height];
       }
