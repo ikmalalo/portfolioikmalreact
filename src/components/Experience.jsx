@@ -24,10 +24,10 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section className="pt-8 pb-section-padding px-gutter bg-surface-container-lowest/50" id="experience">
+    <section className="pt-32 pb-section-padding px-gutter bg-surface-container-lowest/50" id="experience">
       <div className="max-w-4xl mx-auto">
-        <div className="flex flex-col items-start mb-16">
-          <h2 className="font-h2 text-4xl font-bold text-white mb-4">Pengalaman</h2>
+        <div className="flex flex-col items-center mb-16">
+          <h2 className="font-h2 text-4xl font-bold text-white mb-4">My Experiences</h2>
           <div className="h-1 w-20 bg-cyan-400 rounded-full"></div>
         </div>
         <div className="space-y-12 relative before:content-[''] before:absolute before:left-[19px] before:top-2 before:bottom-2 before:w-[2px] before:bg-white/10">

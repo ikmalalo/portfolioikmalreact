@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import SplitText from './SplitText';
+import Aurora from './Aurora';
 
 const Welcome = () => {
   const scrollToHero = () => {
@@ -12,10 +13,14 @@ const Welcome = () => {
 
   return (
     <section className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden px-6">
-      {/* Background decoration */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/30 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[100px]"></div>
+      {/* Aurora Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-50">
+        <Aurora
+          colorStops={["#06B6D4", "#05f8e1", "#00ffc6"]}
+          blend={0.5}
+          amplitude={1.0}
+          speed={1}
+        />
       </div>
 
       <div className="relative z-10 flex flex-col items-center text-center">

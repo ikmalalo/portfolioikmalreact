@@ -19,20 +19,31 @@ const StarBorder = ({
       }}
       {...rest}
     >
-      <div
-        className="border-gradient-bottom"
+      <div 
+        className="absolute inset-0 rounded-[inherit] pointer-events-none"
         style={{
-          background: `radial-gradient(circle, ${color}, transparent 20%)`,
-          animationDuration: speed
+          padding: `${thickness}px`,
+          WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+          WebkitMaskComposite: 'xor',
+          mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+          maskComposite: 'exclude',
         }}
-      ></div>
-      <div
-        className="border-gradient-top"
-        style={{
-          background: `radial-gradient(circle, ${color}, transparent 20%)`,
-          animationDuration: speed
-        }}
-      ></div>
+      >
+        <div
+          className="border-gradient-bottom"
+          style={{
+            background: `radial-gradient(circle, ${color}, transparent 20%)`,
+            animationDuration: speed
+          }}
+        ></div>
+        <div
+          className="border-gradient-top"
+          style={{
+            background: `radial-gradient(circle, ${color}, transparent 20%)`,
+            animationDuration: speed
+          }}
+        ></div>
+      </div>
       <div className="inner-content-wrapper">{children}</div>
     </Component>
   );

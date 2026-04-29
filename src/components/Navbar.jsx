@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import StarBorder from './StarBorder';
 
 const Navbar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -40,13 +41,13 @@ const Navbar = () => {
         <AnimatePresence>
           {!isCollapsed && (
             <>
-              {/* Center/Right Links */}
+              {/* Center/Right Links - Hidden on mobile, shown on md+ */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                 exit={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
                 transition={{ duration: 0.2 }}
-                className="absolute right-6 md:static flex gap-3 md:gap-8 items-center whitespace-nowrap z-10 text-[10px] sm:text-sm md:text-base"
+                className="hidden md:flex gap-8 items-center whitespace-nowrap z-10 text-sm md:text-base"
               >
                 <a className="text-white/70 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all" href="#stack">Stack</a>
                 <a className="text-white/70 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all" href="#experience">Experience</a>
@@ -62,10 +63,19 @@ const Navbar = () => {
                 transition={{ duration: 0.2 }}
                 className="absolute right-6 hidden md:flex items-center gap-4 z-10"
               >
-                <span className="material-symbols-outlined text-cyan-400">terminal</span>
-                <button className="bg-[#00fff7] text-black px-5 py-2 rounded-full font-label-caps text-xs hover:shadow-[0_0_20px_rgba(0,255,247,0.6)] hover:bg-[#b3fffb] transition-all whitespace-nowrap">
-                  Hire Me
-                </button>
+                <span className="material-symbols-outlined text-cyan-400">mail</span>
+                <StarBorder
+                  as="a"
+                  href="mailto:itsikmlal@gmail.com"
+                  color="#00fff7"
+                  speed="3s"
+                  className="hover:shadow-[0_0_20px_rgba(0,255,247,0.4)] transition-all cursor-pointer"
+                  style={{ borderRadius: '9999px' }}
+                >
+                  <div className="block bg-white/5 backdrop-blur-xl border border-white/10 text-white px-5 py-2 rounded-full font-label-caps text-xs hover:bg-white/10 transition-colors whitespace-nowrap">
+                    itsikmlal@gmail.com
+                  </div>
+                </StarBorder>
               </motion.div>
             </>
           )}
