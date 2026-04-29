@@ -19,7 +19,7 @@ const Projects = () => {
   return (
     <section className="py-section-padding px-gutter max-w-7xl mx-auto" id="projects">
       <div className="flex flex-col items-center mb-16">
-        <h2 className="font-h2 text-4xl font-bold text-white mb-4">Projek Pilihan</h2>
+        <h2 className="font-h2 text-4xl font-bold text-white mb-4">My Projects</h2>
         <div className="h-1 w-20 bg-cyan-400 rounded-full"></div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

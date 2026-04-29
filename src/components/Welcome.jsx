@@ -30,7 +30,7 @@ const Welcome = () => {
           </span>
         </motion.div>
         
-        <div className="font-h1 text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-tight flex flex-col items-center">
+        <div className="font-h1 text-5xl md:text-9xl lg:text-9xl font-black tracking-tighter leading-tight flex flex-col items-center">
           <SplitText
             text="Welcome to my"
             className="text-white block"
@@ -41,7 +41,7 @@ const Welcome = () => {
             to={{ opacity: 1, y: 0, rotationX: 0 }}
           />
           <SplitText
-            text="Digital Space."
+            text="Portfolio."
             className="text-cyan-400 drop-shadow-[0_0_15px_rgba(0,255,247,0.4)] block pt-2"
             delay={40}
             duration={0.8}
@@ -57,8 +57,8 @@ const Welcome = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
         >
-          <span>Explore everything about me on here, hope you enjoy it</span>
-          <span className="material-symbols-outlined text-cyan-400 text-2xl">sentiment_satisfied_alt</span>
+          <span>Explore everything about me on here, hope you enjoy it!</span>
+          
         </motion.div>
       </div>
 

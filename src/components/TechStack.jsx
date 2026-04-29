@@ -13,7 +13,7 @@ const TechStack = () => {
   return (
     <section className="pt-section-padding pb-8 px-gutter max-w-7xl mx-auto" id="stack">
       <div className="flex flex-col items-center mb-16">
-        <h2 className="font-h2 text-4xl font-bold text-white mb-4">Bahasa Coding</h2>
+        <h2 className="font-h2 text-4xl font-bold text-white mb-4">My Skills</h2>
         <div className="h-1 w-20 bg-cyan-400 rounded-full"></div>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
