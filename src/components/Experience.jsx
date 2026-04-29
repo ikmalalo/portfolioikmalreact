@@ -28,6 +28,10 @@ const experiences = [
     mode: 'Remote',
     description: 'Participating in the ASAH program focused on modern web development. Building AI-integrated full-stack applications using React.js and Node.js.',
     skills: ['React.js', 'JavaScript', 'Node.js', 'AI Integration'],
+    media: [
+      { title: 'Project AI Demo' },
+      { title: 'Backend Architecture' }
+    ],
     logo: 'psychology'
   },
   {
@@ -40,6 +44,10 @@ const experiences = [
     mode: 'Hybrid',
     description: 'Community service activities at SMP Wahidiyah Samarinda with the theme "Digital Vitality for Community Empowerment in the Technology Era."',
     skills: ['Front-End Development', 'Laravel', 'Public Speaking'],
+    media: [
+      { title: 'SMP Wahidiyah' },
+      { title: 'Digital Vitality Session' }
+    ],
     logo: 'groups'
   },
   {
