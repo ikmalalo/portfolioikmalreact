@@ -1,5 +1,4 @@
 import React from 'react';
-import StarBorder from './StarBorder';
 
 const experiences = [
   {
@@ -38,20 +37,18 @@ const Experience = () => {
                   {exp.icon}
                 </span>
               </div>
-              <StarBorder color="#00fff7" thickness={1} speed="5s" className="rounded-2xl">
-                <div className="glass-card p-8 h-full bg-[#0a0a0a] border-none">
-                  <div className="flex flex-col md:flex-row justify-between mb-4">
-                    <div>
-                      <h3 className="font-h2 text-xl font-bold text-white">{exp.title}</h3>
-                      <p className="text-cyan-400 font-label-caps text-xs uppercase tracking-widest">{exp.company} • {exp.location}</p>
-                    </div>
-                    <span className="text-white/40 text-sm mt-2 md:mt-0">{exp.period}</span>
+              <div className="glass-card p-8 h-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 transition-colors duration-300">
+                <div className="flex flex-col md:flex-row justify-between mb-4">
+                  <div>
+                    <h3 className="font-h2 text-xl font-bold text-white">{exp.title}</h3>
+                    <p className="text-cyan-400 font-label-caps text-xs uppercase tracking-widest">{exp.company} • {exp.location}</p>
                   </div>
-                  <p className="text-white/60 text-sm leading-relaxed">
-                    {exp.description}
-                  </p>
+                  <span className="text-white/40 text-sm mt-2 md:mt-0">{exp.period}</span>
                 </div>
-              </StarBorder>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  {exp.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
