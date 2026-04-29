@@ -1,7 +1,11 @@
 import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
 import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import './Aurora.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const VERT = `#version 300 es
 in vec2 position;
@@ -177,8 +181,22 @@ export default function Aurora(props) {
     ctn.appendChild(gl.canvas);
 
     let animateId = 0;
+    let isVisible = true;
+
+    // Visibility Detection using ScrollTrigger
+    const st = ScrollTrigger.create({
+      trigger: ctn,
+      start: "top bottom", // when top of ctn hits bottom of viewport
+      end: "bottom top", // when bottom of ctn hits top of viewport
+      onToggle: self => {
+        isVisible = self.isActive;
+      }
+    });
+
     const update = t => {
       animateId = requestAnimationFrame(update);
+      if (!isVisible) return; // Skip rendering if not visible
+
       const { time = t * 0.01, speed = 1.0 } = propsRef.current;
       program.uniforms.uTime.value = time * speed * 0.1;
       program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 1.0;
@@ -197,6 +215,7 @@ export default function Aurora(props) {
     return () => {
       cancelAnimationFrame(animateId);
       window.removeEventListener('resize', resize);
+      st.kill(); // Kill scroll trigger
       if (ctn && gl.canvas.parentNode === ctn) {
         ctn.removeChild(gl.canvas);
       }

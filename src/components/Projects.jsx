@@ -30,6 +30,7 @@ const Projects = () => {
                 alt={project.title} 
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80" 
                 src={project.image} 
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent"></div>
               <div className="absolute bottom-4 left-6 flex gap-2">
