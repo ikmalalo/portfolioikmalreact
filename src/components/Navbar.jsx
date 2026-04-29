@@ -59,7 +59,7 @@ const Navbar = () => {
   useEffect(() => {
     if (navRef.current) {
       gsap.to(navRef.current, { 
-        height: isMobileMenuOpen ? '150px' : '60px', 
+        height: isMobileMenuOpen ? '180px' : '60px', 
         duration: 0.4, 
         ease: "power2.out" 
       });
@@ -76,32 +76,24 @@ const Navbar = () => {
   return (
     <nav 
       ref={navRef}
-      className="fixed top-6 left-1/2 -translate-x-1/2 max-w-5xl z-50 bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_2px_rgba(255,255,255,0.3),inset_0_-1px_2px_rgba(0,0,0,0.5),0_10px_40px_rgba(0,0,0,0.5)] rounded-[32px] overflow-hidden"
+      className="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50 bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_2px_rgba(255,255,255,0.3),inset_0_-1px_2px_rgba(0,0,0,0.5),0_10px_40px_rgba(0,0,0,0.5)] rounded-[32px] overflow-hidden"
     >
-      <div className="relative w-full h-full flex items-center justify-center">
-        {/* Logo */}
-        <div 
-          className={`absolute text-xl font-black tracking-tighter text-cyan-400 drop-shadow-[0_0_10px_rgba(0,255,247,0.5)] transition-all duration-500 ease-out whitespace-nowrap ${
-            isCollapsed ? 'left-1/2 -translate-x-1/2' : 'left-6'
-          }`}
-        >
-          Ikmalatte
-        </div>
+      <div className="relative w-full flex flex-col items-center">
+        {/* Header Row (Always 60px) */}
+        <div className="w-full h-[60px] flex items-center justify-between px-6 relative z-20">
+          {/* Logo */}
+          <div 
+            className={`text-xl font-black tracking-tighter text-cyan-400 drop-shadow-[0_0_10px_rgba(0,255,247,0.5)] transition-all duration-500 whitespace-nowrap ${
+              isCollapsed ? 'absolute left-1/2 -translate-x-1/2' : ''
+            }`}
+          >
+            Ikmalatte
+          </div>
 
-        {/* Content Container */}
-        <AnimatePresence>
+          {/* Desktop Menu */}
           {!isCollapsed && (
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="w-full h-full flex items-center justify-between px-6"
-            >
-              {/* Spacer for Logo alignment */}
-              <div className="w-[100px] hidden md:block"></div>
-
-              {/* Desktop Menu */}
-              <div className="hidden md:flex gap-8 items-center">
+            <div className="hidden md:flex items-center justify-between flex-1 ml-12">
+              <div className="flex gap-8 items-center">
                 {navLinks.map((link) => (
                   <a 
                     key={link.name} 
@@ -112,49 +104,56 @@ const Navbar = () => {
                   </a>
                 ))}
               </div>
-
-              {/* Desktop Email */}
-              <div className="hidden md:flex items-center gap-4">
+              <div className="flex items-center gap-4">
                 <span className="material-symbols-outlined text-cyan-400">mail</span>
                 <a 
                   href="mailto:itsikmlal@gmail.com" 
-                  className="bg-white/5 backdrop-blur-xl border border-white/10 text-white px-5 py-2 rounded-full font-label-caps text-xs hover:bg-white/10 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(0,255,247,0.2)] transition-all whitespace-nowrap"
+                  className="bg-white/5 backdrop-blur-xl border border-white/10 text-white px-5 py-2 rounded-full font-label-caps text-xs hover:bg-white/10 transition-all whitespace-nowrap"
                 >
                   itsikmlal@gmail.com
                 </a>
               </div>
-
-              {/* Mobile Toggle */}
-              <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden text-white p-2">
-                <span className="material-symbols-outlined text-2xl">{isMobileMenuOpen ? 'close' : 'menu'}</span>
-              </button>
-            </motion.div>
+            </div>
           )}
-        </AnimatePresence>
 
-        {/* Mobile Menu Content */}
-        <AnimatePresence>
-          {isMobileMenuOpen && !isCollapsed && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="absolute top-[60px] left-0 w-full md:hidden flex flex-row flex-wrap items-center justify-center gap-x-6 gap-y-4 px-6 pb-6"
+          {/* Mobile Toggle Button */}
+          {!isCollapsed && (
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
+              className="md:hidden text-white p-2 flex items-center justify-center relative z-30"
             >
-              <div className="h-[1px] w-full bg-white/10 mb-2"></div>
-              {navLinks.map((link) => (
-                <a 
-                  key={link.name} 
-                  onClick={() => setIsMobileMenuOpen(false)} 
-                  className="text-white/70 hover:text-white text-sm font-medium transition-all" 
-                  href={link.href}
-                >
-                  {link.name}
-                </a>
-              ))}
+              <span className="material-symbols-outlined text-2xl">
+                {isMobileMenuOpen ? 'close' : 'menu'}
+              </span>
+            </button>
+          )}
+        </div>
+
+        {/* Mobile Menu Content (Expandable) */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="w-full md:hidden flex flex-col items-center gap-4 px-6 pb-6"
+            >
+              <div className="h-[1px] w-full bg-white/10"></div>
+              <div className="flex flex-row flex-wrap items-center justify-center gap-x-6 gap-y-3">
+                {navLinks.map((link) => (
+                  <a 
+                    key={link.name} 
+                    onClick={() => setIsMobileMenuOpen(false)} 
+                    className="text-white/70 hover:text-white text-sm font-medium transition-all" 
+                    href={link.href}
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </div>
               <a 
                 href="mailto:itsikmlal@gmail.com" 
-                className="bg-white/5 border border-white/10 text-white px-4 py-2 rounded-full font-label-caps text-[10px] hover:bg-white/10 transition-all flex items-center gap-2"
+                className="bg-white/5 border border-white/10 text-white px-4 py-2 rounded-full font-label-caps text-[10px] hover:bg-white/10 transition-all flex items-center gap-2 mt-1"
               >
                 <span className="material-symbols-outlined text-cyan-400 text-sm">mail</span>
                 Email
