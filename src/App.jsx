@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import GlowingArc from './components/GlowingArc'
 import TechStack from './components/TechStack'
 import Experience from './components/Experience'
 import Projects from './components/Projects'
@@ -50,7 +51,12 @@ function App() {
         <main className="grid-bg">
           <Welcome />
           <Hero />
-          <TechStack />
+          <div className="relative">
+            <GlowingArc />
+            <div className="relative z-10 mt-[-150px]">
+              <TechStack />
+            </div>
+          </div>
           <Experience />
           <Projects />
           <Hobbies />
