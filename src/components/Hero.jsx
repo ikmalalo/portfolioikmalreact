@@ -75,8 +75,8 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right Column: Profile Card - Hidden on mobile, shown on lg+ */}
-        <div className="hero-reveal hidden lg:flex lg:w-1/2 justify-center lg:justify-end mt-8 lg:mt-0 w-full scale-90 sm:scale-100">
+        {/* Right Column: Profile Card - Now shown on all screen sizes */}
+        <div className="hero-reveal flex lg:w-1/2 justify-center lg:justify-end mt-12 lg:mt-0 w-full">
           <ProfileCard
             name="Ikmal Ali Azhari"
             title="Software Engineer"
@@ -88,7 +88,7 @@ const Hero = () => {
             enableTilt={true}
             enableMobileTilt={true}
             behindGlowEnabled={true}
-            className="w-full max-w-[400px] sm:max-w-[450px]"
+            className="mx-auto w-[280px] xs:w-[320px] sm:w-[400px] lg:w-[450px]"
           />
         </div>
       </div>

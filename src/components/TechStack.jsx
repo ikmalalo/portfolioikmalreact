@@ -44,10 +44,10 @@ const TechStack = () => {
         <div className="space-y-8">
           <div className="flex items-center gap-4">
             <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-white/10"></div>
-            <h3 className="font-h2 text-lg text-white/40 uppercase tracking-[0.3em] font-semibold whitespace-nowrap">Programming Languages</h3>
+            <h3 className="font-h2 text-xs sm:text-lg text-white/40 uppercase tracking-[0.1em] sm:tracking-[0.3em] font-semibold text-center">Programming Languages</h3>
             <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-white/10"></div>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 xs:grid-cols-3 gap-3 sm:gap-4">
             {languages.map((item) => <SkillCard key={item.name} item={item} />)}
           </div>
         </div>
@@ -56,10 +56,10 @@ const TechStack = () => {
         <div className="space-y-8">
           <div className="flex items-center gap-4">
             <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-white/10"></div>
-            <h3 className="font-h2 text-lg text-white/40 uppercase tracking-[0.3em] font-semibold whitespace-nowrap">Frameworks & Tools</h3>
+            <h3 className="font-h2 text-xs sm:text-lg text-white/40 uppercase tracking-[0.1em] sm:tracking-[0.3em] font-semibold text-center">Frameworks & Tools</h3>
             <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-white/10"></div>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
             {frameworks.map((item) => <SkillCard key={item.name} item={item} />)}
           </div>
         </div>
