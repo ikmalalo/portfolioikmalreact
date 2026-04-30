@@ -59,7 +59,7 @@ const Navbar = () => {
   useEffect(() => {
     if (navRef.current) {
       gsap.to(navRef.current, { 
-        height: isMobileMenuOpen ? '180px' : '60px', 
+        height: isMobileMenuOpen ? 'auto' : '60px', 
         duration: 0.4, 
         ease: "power2.out" 
       });
@@ -80,49 +80,53 @@ const Navbar = () => {
     >
       <div className="relative w-full flex flex-col items-center">
         {/* Header Row (Always 60px) */}
-        <div className="w-full h-[60px] flex items-center justify-between px-6 relative z-20">
-          {/* Logo */}
+        <div className="w-full h-[60px] flex items-center px-6 relative z-20">
+          {/* Desktop Menu (Left Side) */}
+          {!isCollapsed && (
+            <div className="hidden md:flex items-center gap-8 flex-1">
+              {navLinks.map((link) => (
+                <a 
+                  key={link.name} 
+                  className="text-white/70 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all text-sm font-medium" 
+                  href={link.href}
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+          )}
+
+          {/* Logo (Centered) */}
           <div 
-            className="text-xl font-black tracking-tighter text-cyan-400 drop-shadow-[0_0_10px_rgba(0,255,247,0.5)] transition-all duration-500 whitespace-nowrap"
+            className="absolute left-1/2 -translate-x-1/2 text-xl font-black tracking-tighter text-cyan-400 drop-shadow-[0_0_10px_rgba(0,255,247,0.5)] transition-all duration-500 whitespace-nowrap pt-[4px]"
           >
             Ikmalatte
           </div>
 
-          {/* Desktop Menu */}
-          {!isCollapsed && (
-            <div className="hidden md:flex items-center justify-between flex-1 ml-12">
-              <div className="flex gap-8 items-center">
-                {navLinks.map((link) => (
-                  <a 
-                    key={link.name} 
-                    className="text-white/70 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all text-sm font-medium" 
-                    href={link.href}
-                  >
-                    {link.name}
-                  </a>
-                ))}
-              </div>
-              <div className="flex items-center gap-4">
-                <span className="material-symbols-outlined text-cyan-400">mail</span>
+          {/* Right Side (Email/Toggle) */}
+          <div className="flex-1 flex justify-end items-center gap-4">
+            {!isCollapsed && (
+              <div className="hidden md:flex items-center gap-4">
+                <span className="material-symbols-outlined text-cyan-400 text-sm">mail</span>
                 <a 
                   href="mailto:itsikmlal@gmail.com" 
-                  className="bg-white/5 backdrop-blur-xl border border-white/10 text-white px-5 py-2 rounded-full font-label-caps text-xs hover:bg-white/10 transition-all whitespace-nowrap"
+                  className="bg-white/5 backdrop-blur-xl border border-white/10 text-white px-4 py-1.5 rounded-full font-label-caps text-[10px] hover:bg-white/10 transition-all whitespace-nowrap"
                 >
                   itsikmlal@gmail.com
                 </a>
               </div>
-            </div>
-          )}
-
-          {/* Mobile Toggle Button */}
-          <button 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
-            className="md:hidden text-white p-2 flex items-center justify-center relative z-30 transition-all duration-300"
-          >
-            <span className="material-symbols-outlined text-2xl">
-              {isMobileMenuOpen ? 'close' : 'menu'}
-            </span>
-          </button>
+            )}
+            
+            {/* Mobile Toggle Button */}
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
+              className="md:hidden text-white p-2 flex items-center justify-center relative z-30 transition-all duration-300"
+            >
+              <span className="material-symbols-outlined text-2xl">
+                {isMobileMenuOpen ? 'close' : 'menu'}
+              </span>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu Content (Expandable) */}
