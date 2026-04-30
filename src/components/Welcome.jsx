@@ -61,7 +61,7 @@ const Welcome = () => {
           </span>
         </motion.div>
         
-        <div className="font-h1 text-5xl md:text-9xl lg:text-9xl font-black tracking-tighter leading-tight flex flex-col items-center">
+        <div className="font-h1 text-3xl sm:text-5xl md:text-9xl lg:text-9xl font-black tracking-tighter leading-tight flex flex-col items-center">
           <SplitText
             text="Welcome to my"
             className="text-white block"

@@ -11,6 +11,7 @@ import Projects from './components/Projects'
 import Hobbies from './components/Hobbies'
 import Footer from './components/Footer'
 import Welcome from './components/Welcome'
+import CustomCursor from './components/CustomCursor';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,13 +46,14 @@ function App() {
   }, []);
 
   return (
-    <div className="font-body-md custom-scrollbar bg-brand-bg relative">
-      <div className="relative z-10">
+    <div className="font-body-md bg-brand-bg relative w-full overflow-x-hidden">
+      <CustomCursor />
+      <div className="relative z-10 w-full overflow-x-hidden">
         <Navbar />
-        <main className="grid-bg">
+        <main className="grid-bg w-full overflow-x-hidden">
           <Welcome />
           <Hero />
-          <div className="relative">
+          <div className="relative w-full z-30">
             <GlowingArc />
             <div className="relative z-10 mt-[-150px]">
               <TechStack />

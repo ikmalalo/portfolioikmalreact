@@ -24,7 +24,7 @@ const Navbar = () => {
           setIsCollapsed(true);
           setIsMobileMenuOpen(false);
           gsap.to(nav, {
-            width: '200px',
+            width: window.innerWidth < 768 ? '90%' : '200px',
             duration: 0.6,
             ease: "power4.out",
             overwrite: true
@@ -83,9 +83,7 @@ const Navbar = () => {
         <div className="w-full h-[60px] flex items-center justify-between px-6 relative z-20">
           {/* Logo */}
           <div 
-            className={`text-xl font-black tracking-tighter text-cyan-400 drop-shadow-[0_0_10px_rgba(0,255,247,0.5)] transition-all duration-500 whitespace-nowrap ${
-              isCollapsed ? 'absolute left-1/2 -translate-x-1/2' : ''
-            }`}
+            className="text-xl font-black tracking-tighter text-cyan-400 drop-shadow-[0_0_10px_rgba(0,255,247,0.5)] transition-all duration-500 whitespace-nowrap"
           >
             Ikmalatte
           </div>
@@ -117,16 +115,14 @@ const Navbar = () => {
           )}
 
           {/* Mobile Toggle Button */}
-          {!isCollapsed && (
-            <button 
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
-              className="md:hidden text-white p-2 flex items-center justify-center relative z-30"
-            >
-              <span className="material-symbols-outlined text-2xl">
-                {isMobileMenuOpen ? 'close' : 'menu'}
-              </span>
-            </button>
-          )}
+          <button 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
+            className="md:hidden text-white p-2 flex items-center justify-center relative z-30 transition-all duration-300"
+          >
+            <span className="material-symbols-outlined text-2xl">
+              {isMobileMenuOpen ? 'close' : 'menu'}
+            </span>
+          </button>
         </div>
 
         {/* Mobile Menu Content (Expandable) */}

@@ -63,12 +63,22 @@
   box-sizing: border-box;
 }
 
+@media (pointer: fine) {
+  body, a, button, [role="button"], input, textarea {
+    cursor: none !important;
+  }
+}
+
+html,
 body {
   background-color: var(--brand-bg);
   color: var(--on-surface);
   font-family: var(--font-body);
   overflow-x: hidden;
+  width: 100%;
+  position: relative;
   line-height: 1.5;
+  -webkit-tap-highlight-color: transparent;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -77,9 +87,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .glass-card {
   background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
 }
 
 .glass-card:hover {

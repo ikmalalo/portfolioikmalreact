@@ -47,9 +47,10 @@
     var(--behind-glow-color) 0%,
     transparent var(--behind-glow-size)
   );
-  filter: blur(20px) saturate(1.1);
+  filter: blur(12px) saturate(1.1);
   opacity: calc(0.8 * var(--card-opacity));
   transition: opacity 200ms ease;
+  will-change: opacity, filter;
 }
 
 .pc-card-wrapper:hover,
@@ -106,16 +107,10 @@
 }
 
 .pc-shine {
-  mask-image: var(--icon);
-  mask-mode: luminance;
-  mask-repeat: repeat;
-  mask-size: 150%;
-  mask-position: top calc(200% - (var(--background-y) * 5)) left calc(100% - var(--background-x));
-  transition: filter 0.8s ease;
-  filter: brightness(0.9) opacity(0.4);
-  animation: holo-bg 18s linear infinite;
-  animation-play-state: running;
+  transition: opacity 0.8s ease;
+  opacity: 0.2;
   mix-blend-mode: overlay;
+  z-index: 3;
 }
 
 .pc-shine,
@@ -217,16 +212,10 @@
 }
 
 .pc-shine::after {
-  background-position:
-    0 var(--background-y),
-    calc(var(--background-x) * 0.4) calc(var(--background-y) * 0.5),
-    center;
-  background-size:
-    200% 300%,
-    700% 700%,
-    100% 100%;
-  mix-blend-mode: difference;
-  filter: brightness(0.8) contrast(1.5);
+  background-position: center;
+  background-size: 200% 200%;
+  mix-blend-mode: soft-light;
+  filter: brightness(0.8);
 }
 
 .pc-glare {
@@ -282,9 +271,11 @@
   align-items: center;
   justify-content: space-between;
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: calc(max(0px, var(--card-radius) - var(--ui-inset) + var(--ui-radius-bias)));
+  transform: translateZ(0);
   padding: 12px 14px;
   pointer-events: auto;
 }

@@ -147,10 +147,10 @@ const SplitText = ({
     const style = {
       textAlign,
       overflow: 'visible',
-      display: 'inline-block',
+      display: 'block',
+      width: '100%',
       whiteSpace: 'normal',
-      wordWrap: 'break-word',
-      willChange: 'transform, opacity'
+      wordWrap: 'break-word'
     };
     const classes = `split-parent ${className}`;
     const Tag = tag || 'p';

@@ -49,7 +49,7 @@ const Hero = () => {
   return (
     <section 
       ref={sectionRef}
-      className="min-h-screen flex flex-col justify-center items-center px-6 md:px-12 lg:px-24 pt-40 pb-16 relative overflow-hidden max-w-7xl mx-auto w-full"
+      className="min-h-screen flex flex-col justify-center items-center px-6 md:px-12 lg:px-24 pt-32 pb-16 relative overflow-x-hidden z-0 max-w-7xl mx-auto w-full"
     >
       <div className="hero-parallax-wrapper relative z-10 w-full flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
         {/* Left Column: Text Content */}
