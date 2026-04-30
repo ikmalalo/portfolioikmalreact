@@ -24,7 +24,7 @@ const Navbar = () => {
           setIsCollapsed(true);
           setIsMobileMenuOpen(false);
           gsap.to(nav, {
-            width: window.innerWidth < 768 ? '90%' : '200px',
+            width: window.innerWidth < 768 ? '160px' : '200px',
             duration: 0.6,
             ease: "power4.out",
             overwrite: true
@@ -106,26 +106,28 @@ const Navbar = () => {
           {/* Right Side (Email/Toggle) */}
           <div className="flex-1 flex justify-end items-center gap-4">
             {!isCollapsed && (
-              <div className="hidden md:flex items-center gap-4">
-                <span className="material-symbols-outlined text-cyan-400 text-sm">mail</span>
-                <a 
-                  href="mailto:itsikmlal@gmail.com" 
-                  className="bg-white/5 backdrop-blur-xl border border-white/10 text-white px-4 py-1.5 rounded-full font-label-caps text-[10px] hover:bg-white/10 transition-all whitespace-nowrap"
+              <>
+                <div className="hidden md:flex items-center gap-4">
+                  <span className="material-symbols-outlined text-cyan-400 text-sm">mail</span>
+                  <a 
+                    href="mailto:itsikmlal@gmail.com" 
+                    className="bg-white/5 backdrop-blur-xl border border-white/10 text-white px-4 py-1.5 rounded-full font-label-caps text-[10px] hover:bg-white/10 transition-all whitespace-nowrap"
+                  >
+                    itsikmlal@gmail.com
+                  </a>
+                </div>
+                
+                {/* Mobile Toggle Button */}
+                <button 
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
+                  className="md:hidden text-white p-2 flex items-center justify-center relative z-30 transition-all duration-300"
                 >
-                  itsikmlal@gmail.com
-                </a>
-              </div>
+                  <span className="material-symbols-outlined text-2xl">
+                    {isMobileMenuOpen ? 'close' : 'menu'}
+                  </span>
+                </button>
+              </>
             )}
-            
-            {/* Mobile Toggle Button */}
-            <button 
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
-              className="md:hidden text-white p-2 flex items-center justify-center relative z-30 transition-all duration-300"
-            >
-              <span className="material-symbols-outlined text-2xl">
-                {isMobileMenuOpen ? 'close' : 'menu'}
-              </span>
-            </button>
           </div>
         </div>
 
